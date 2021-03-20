@@ -42,7 +42,6 @@
   color: var(--button-text);
   border: var(--button-border-width) solid var(--button-border-color);
 
-  margin: 0;
   outline: 0;
 }
 
@@ -83,6 +82,7 @@
   padding-left: var(--button-padding-tb);
   padding-right: var(--button-padding-tb);
 
+  vertical-align: bottom; /* fix icon button inline margin. idk how :)*/
   min-width: 1.3333em;
 }
 

@@ -39,8 +39,8 @@ const cssOffset = (value, offset) => `calc(${value}px + ${offset}em)`
 export const Window = ({
   title,
   children,
-  startWidth = 400,
-  startHeight = 300,
+  startWidth,
+  startHeight,
   minWidth = 300,
   minHeight = 300,
   desktopWidth,
