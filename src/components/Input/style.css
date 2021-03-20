@@ -27,6 +27,17 @@
   width: calc(2em + 2px);
 }
 
+/* you should move this to ContentMain/style.css
+how to order mixes in bem */
+
 .input--success {
   background-color: #98fb98;
+}
+
+.input--warning {
+  background-color: #fafad2;
+}
+
+.input--failure {
+  background-color: #f89d9d;
 }
