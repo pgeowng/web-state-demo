@@ -1,17 +1,21 @@
 .window {
-  border: 1px solid #000e;
-  position: relative;
+  border: 0.08333em solid #000e;
+  position: absolute;
+  user-select: none;
 }
 
 .window__header {
   background-color: #2b2b2b;
-  min-height: 1.875em;
+  min-height: 2.5em;
+  display: flex;
+  align-items: stretch;
 }
 
 .window__desc {
-  padding: 6px 0 0 8px;
+  padding: 0.5em 0 0 0.6666em;
 
   display: flex;
+  flex-grow: 1;
 }
 
 .window__icon {
@@ -25,16 +29,19 @@
 .window__title {
   color: #eee;
   font-size: 1em;
+  vertical-align: bottom;
 
   user-select: none;
 }
 
-.window_buttons {
+.window__buttons {
+  width: 11.5em;
+  background-color: gray;
+  flex-grow: 0;
 }
 
 .window__content {
   background-color: #2a2f38;
-  height: 600px;
 }
 
 .window__resize-zone {
