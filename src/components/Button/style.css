@@ -83,7 +83,7 @@
   padding-left: var(--button-padding-tb);
   padding-right: var(--button-padding-tb);
 
-  min-width: 16px;
+  min-width: 1.3333em;
 }
 
 .button--icon:focus {
