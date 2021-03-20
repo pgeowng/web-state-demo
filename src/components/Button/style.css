@@ -1,0 +1,115 @@
+/* button reset from https://moderncss.dev/css-button-styling-guide/ */
+
+:root {
+  --button-bg: #343941;
+  --button-text: #ebebeb;
+  --button-border-color: #1c2026;
+  --button-padding-tb-focus: 0.25em;
+  --button-padding-lr-focus: 0.75em;
+  --button-border-width: 0.08333em;
+  --button-border-width-focus: 0.16666em;
+  --button-border-width-diff: calc(
+    var(--button-border-width-focus) - var(--button-border-width)
+  );
+
+  --button-padding-lr: calc(
+    var(--button-padding-lr-focus) + var(--button-border-width-diff)
+  );
+
+  --button-padding-tb: calc(
+    var(--button-padding-tb-focus) + var(--button-border-width-diff)
+  );
+}
+
+.button {
+  border: none;
+  background-color: transparent;
+  font-family: inherit;
+  padding: 0;
+  cursor: pointer;
+  font-size: 1em;
+
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: var(--button-padding-tb) var(--button-padding-lr);
+  min-width: 10ch;
+  min-height: 21px;
+
+  /* dark */
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  border: var(--button-border-width) solid var(--button-border-color);
+
+  margin: 0;
+  outline: 0;
+}
+
+.button:hover {
+  background-color: #3e444e;
+}
+
+.button:active {
+  background-color: #848b97;
+}
+
+.button:focus {
+  padding: var(--button-padding-tb-focus) var(--button-padding-lr-focus);
+
+  border-width: var(--button-border-width-focus);
+}
+
+/* button--white */
+
+.button--white {
+  background-color: #e1e1e1;
+  color: #000000;
+  border-color: #adadad;
+}
+
+.button--white:hover {
+  background-color: #e5f1fb;
+  border-color: #0078d7;
+}
+
+.button--white:focus {
+  border-color: #0078d7;
+}
+
+/* button--icon - order matters*/
+
+.button--icon {
+  padding-left: var(--button-padding-tb);
+  padding-right: var(--button-padding-tb);
+
+  min-width: 16px;
+}
+
+.button--icon:focus {
+  padding: var(--button-padding-tb-focus); /* how should i resolve this? */
+}
+
+.button--img {
+  font-size: 1.3333em;
+}
+
+/*
+.button {
+  background-color:
+  color:
+  border-color
+}
+
+.button:hover {
+  background-color:
+}
+
+.button:active {
+  background-color
+}
+
+.button:focus {
+  border-color
+  border-width
+}*/
