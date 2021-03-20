@@ -1,0 +1,32 @@
+.input {
+  font-size: 1em;
+  font-family: inherit;
+  padding: 0.25em 0.5em;
+
+  outline: 0;
+
+  background-color: #343941;
+  border: 0.08333em solid #646464;
+  color: #ebebeb;
+
+  line-height: 1;
+
+  /* display: block; */
+  /* width: 1em; */
+
+  overflow-x: visible;
+}
+
+.input--white {
+  background-color: #ffffff;
+  color: #000;
+}
+
+.input--box {
+  padding: 0;
+  width: calc(2em + 2px);
+}
+
+.input--success {
+  background-color: #98fb98;
+}
