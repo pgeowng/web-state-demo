@@ -19,10 +19,13 @@ export const BindingRow = ({
   status,
   onEdit,
   onMap,
+  isFirst,
 }) => {
   /* remapping code */
   return (
-    <div className="content-main__item">
+    <div
+      className={`content-main__item ${isFirst && 'content-main__item--first'}`}
+    >
       <ButtonWhite
         onClick={onEdit}
         className="button--icon content-main__field"

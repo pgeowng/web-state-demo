@@ -12,7 +12,6 @@
 }
 
 .content-main__list {
-  margin-bottom: -4px;
   flex-grow: 1;
   overflow: auto;
   flex-basis: 0;
@@ -21,7 +20,11 @@
 .content-main__item {
   display: flex;
   margin-left: -6px;
-  margin-bottom: 4px;
+  margin-top: 4px;
+}
+
+.content-main__item--first {
+  margin-top: 0;
 }
 
 .content-main__field {

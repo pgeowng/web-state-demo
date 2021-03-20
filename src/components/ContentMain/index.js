@@ -35,8 +35,9 @@ export const ContentMain = ({ bindings, selectedIdx, reducer }) => {
         <Button onClick={onRestore}>Restore default hotkeys...</Button>
       </div>
       <div className="content-main__list">
-        {bindings.map(({ idx, desc, mapping, status }) => (
+        {bindings.map(({ idx, desc, mapping, status }, i) => (
           <BindingRow
+            isFirst={i === 0}
             key={idx}
             onEdit={() => reducer({ type: 'edit', idx })}
             onMap={(newMapping) =>
