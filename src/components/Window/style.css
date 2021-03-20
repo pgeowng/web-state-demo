@@ -1,5 +1,6 @@
 .window {
   border: 1px solid #000e;
+  position: relative;
 }
 
 .window__header {
@@ -33,4 +34,22 @@
 
 .window__content {
   background-color: #2a2f38;
+  height: 600px;
+}
+
+.window__resize-zone {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 1em;
+  height: 1em;
+}
+
+.window__resize-icon {
+  position: absolute;
+  right: 0.16666em;
+  bottom: 0.16666em;
+  width: 0.6666em;
+  fill: #bfbfbf; /* you should use color */
+  height: 0.6666em;
 }
