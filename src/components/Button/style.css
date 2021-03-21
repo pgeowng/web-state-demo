@@ -21,7 +21,7 @@
   );
 }
 
-.button {
+button {
   border: none;
   background-color: transparent;
   font-family: inherit;
@@ -32,10 +32,12 @@
   display: inline-flex;
   justify-content: center;
   align-items: center;
-
-  padding: var(--button-padding-tb) var(--button-padding-lr);
   min-width: 10ch;
   min-height: 21px;
+}
+
+.button {
+  padding: var(--button-padding-tb) var(--button-padding-lr);
 
   /* dark */
   background-color: var(--button-bg);
