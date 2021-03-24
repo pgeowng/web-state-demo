@@ -1,9 +1,9 @@
+import { useEffect, useState } from 'react'
 import './App.css'
 
 import { Window } from './components/Window'
 
 import { ContentMain } from './components/ContentMain'
-import { useEffect, useState } from 'react'
 import { ContentEdit } from './components/ContentEdit'
 
 const data = `Screenshot,Print Screen
@@ -92,6 +92,8 @@ categories.splice(
 )
 
 export const App = () => {
+  const [settings, setSettings] = useState({})
+
   const [size, setSize] = useState({
     desktopWidth: window.innerWidth,
     desktopHeight: window.innerHeight,
@@ -131,7 +133,7 @@ export const App = () => {
         minHeight={490}
         {...size}
       >
-        <ContentEdit categories={categories} />
+        <ContentEdit categories={categories} settings={{}} />
       </Window>
     </>
   )

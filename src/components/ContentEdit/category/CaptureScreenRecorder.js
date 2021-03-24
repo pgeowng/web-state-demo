@@ -1,37 +1,61 @@
 import React from 'react'
+import { i18n, keys } from '../../../i18n'
 import { Label } from '../controller/Label'
 import { InputNum } from '../controller/InputNum'
 
-const keys = {
-  fps: 'screen-recording-fps',
-  gifFps: 'gif-fpg',
-}
+import { LabelCheckbox } from '../controller/LabelCheckbox'
 
-Object.keys(keys).forEach((e) => {
-  keys[e] = 'capture-screen-recorder--' + keys[e]
-})
+const i = keys.capture.screenRecorder
 
-export const CaptureScreenRecorder = ({ settings }) => {
+export const CaptureScreenRecorder = ({ settings, reducer }) => {
   return (
     <>
-      <Label id={keys.fps} value="Screen recording FPS:">
+      <Label id={i.FPS} value={i18n[i.FPS]}>
         <InputNum
-          id={keys.fps}
-          value={settings[keys.fps]}
+          id={i.FPS}
+          value={settings[i.FPS]}
           min={1}
           max={30}
           step={1}
+          onChange={reducer}
+          data-key={i.FPS}
         />
       </Label>
-      <Label id={keys.gifFps} value="GIF FPS:">
+      <Label id={i.gifFPS} value={i18n[i.gifFPS]}>
         <InputNum
-          id={keys.gifFps}
-          value={settings[keys.gifFps]}
+          id={i.gifFPS}
+          value={settings[i.gifFPS]}
           min={1}
           max={30}
           step={1}
+          onChange={reducer}
+          data-key={i.gifFPS}
         />
-      </Label>{' '}
+      </Label>
+      <LabelCheckbox
+        checkbox={settings[i.showCursor]}
+        label={i18n[i.showCursor]}
+        id={i.showCursor}
+        onChange={reducer}
+        key={22}
+      />
+
+      <LabelCheckbox
+        checkbox={settings[i.override]}
+        label={i18n[i.override]}
+        id={i.override}
+        key={i.override}
+        onChange={reducer}
+      >
+        <InputNum
+          min={0}
+          max={60}
+          step={0.1}
+          value={i.startDelay}
+          data-key={i.startDelay}
+          onChange={reducer}
+        />
+      </LabelCheckbox>
     </>
   )
 }
