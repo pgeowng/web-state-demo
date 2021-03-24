@@ -5,6 +5,7 @@ import { ButtonReset } from '../Button'
 import { I18N } from './i18n'
 
 import { CheckLabel } from './UI/CheckLabel'
+import { LabelSelect } from './UI/LabelSelect'
 // import { CaptureScreenRecorder } from './category/CaptureScreenRecorder'
 
 const Select = ({ className, ...props }) => (
@@ -55,6 +56,17 @@ const keys = {
 }
 
 const i18n = {}
+const selectEnum = {
+  mouseButtonAction: `Do nothing
+Cancel capture
+Remove shape or cancel capture
+Remove shape
+Swap tool type
+Capture fullscreen
+Capture active monitor`.split('\n'),
+}
+
+console.log(i18n)
 
 Object.keys(keys).forEach((section) =>
   Object.keys(keys[section]).forEach((group) =>
@@ -66,6 +78,12 @@ Object.keys(keys).forEach((section) =>
     })
   )
 )
+
+Object.keys(selectEnum).forEach((entry) => {
+  const k = `selectEnum.${entry}`
+  i18n[k] = selectEnum[entry]
+  selectEnum[entry] = k
+})
 
 console.log(keys)
 
@@ -210,46 +228,31 @@ export const ContentEdit = ({ categories, onSettingSet, settings }) => {
                 value={settings[region.useMultiregion]}
                 onChange={changeSetting}
               />
-              {/* select */}
-              <div className="content-edit__line">
-                <label htmlFor={region.rmbAction}>
-                  {i18n[region.rmbAction]}
-                </label>
-                <select id={region.rmbAction}>
-                  <option>1</option>
-                  <option>2</option>
-                </select>
-              </div>
-              {/* select */}
-              <div className="content-edit__line">
-                <label htmlFor={region.mmbAction}>
-                  {i18n[region.mmbAction]}
-                </label>
-                <select id={region.mmbAction}>
-                  <option>1</option>
-                  <option>2</option>
-                </select>
-              </div>
-              {/* select */}
-              <div className="content-edit__line">
-                <label htmlFor={region.m4bAction}>
-                  {i18n[region.m4bAction]}
-                </label>
-                <select id={region.m4bAction}>
-                  <option>1</option>
-                  <option>2</option>
-                </select>
-              </div>
-              {/* select */}
-              <div className="content-edit__line">
-                <label htmlFor={region.m5bAction}>
-                  {i18n[region.m5bAction]}
-                </label>
-                <select id={region.m5bAction}>
-                  <option>1</option>
-                  <option>2</option>
-                </select>
-              </div>
+
+              <LabelSelect
+                id={region.rmbAction}
+                value={settings[region.rmbAction]}
+                onChange={changeSetting}
+                optionsEnum={selectEnum.mouseButtonAction}
+              />
+              <LabelSelect
+                id={region.mmbAction}
+                value={settings[region.mmbAction]}
+                onChange={changeSetting}
+                optionsEnum={selectEnum.mouseButtonAction}
+              />
+              <LabelSelect
+                id={region.m4bAction}
+                value={settings[region.m4bAction]}
+                onChange={changeSetting}
+                optionsEnum={selectEnum.mouseButtonAction}
+              />
+              <LabelSelect
+                id={region.m5bAction}
+                value={settings[region.m5bAction]}
+                onChange={changeSetting}
+                optionsEnum={selectEnum.mouseButtonAction}
+              />
               <CheckLabel
                 id={region.allowHover}
                 value={settings[region.allowHover]}
