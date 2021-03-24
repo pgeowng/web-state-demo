@@ -6,6 +6,7 @@ import { I18N } from './i18n'
 
 import { CheckLabel } from './UI/CheckLabel'
 import { LabelSelect } from './UI/LabelSelect'
+import { LabelNum, CheckLabelNum } from './UI/LabelNum'
 // import { CaptureScreenRecorder } from './category/CaptureScreenRecorder'
 
 const Select = ({ className, ...props }) => (
@@ -129,82 +130,48 @@ export const ContentEdit = ({ categories, onSettingSet, settings }) => {
               <div className="content-edit__line">
                 <button type="button">Screen recording options...</button>
               </div>
-              {/* label + number input */}
-              <div className="content-edit__line">
-                <label htmlFor={screen.FPS}>{i18n[screen.FPS]}</label>
-                <input
-                  id={screen.FPS}
-                  type="number"
-                  max={60}
-                  min={1}
-                  step={1}
-                  value={settings[screen.FPS]}
-                  data-settings-key={screen.FPS}
-                  onChange={changeSetting}
-                />
-              </div>
-              {/* label + number input */}
-              <div className="content-edit__line">
-                <label htmlFor={screen.gifFPS}>{i18n[screen.gifFPS]}</label>
-                <input
-                  id={screen.gifFPS}
-                  type="number"
-                  max={60}
-                  min={1}
-                  step={1}
-                  value={settings[screen.gifFPS]}
-                  data-settings-key={screen.gifFPS}
-                  onChange={changeSetting}
-                />
-              </div>
+
+              <LabelNum
+                id={screen.FPS}
+                value={settings[screen.FPS]}
+                onChange={changeSetting}
+                min={1}
+                max={60}
+                step={1}
+              />
+              <LabelNum
+                id={screen.gifFPS}
+                value={settings[screen.gifFPS]}
+                onChange={changeSetting}
+                min={1}
+                max={60}
+                step={1}
+              />
               <CheckLabel
                 id={screen.showCursor}
                 value={settings[screen.showCursor]}
                 onChange={changeSetting}
               />
-              {/* checkbox + label + number input*/}
-              <div className="content-edit__line">
-                <input
-                  id={screen.overrideStartDelay}
-                  type="checkbox"
-                  value={settings[screen.overrideStartDelay]}
-                  onChange={changeSetting}
-                />
-                <label htmlFor={screen.overrideStartDelay}>
-                  {i18n[screen.overrideStartDelay]}
-                </label>
-                <input
-                  id={screen.startDelay}
-                  type="number"
-                  max={60}
-                  min={0}
-                  step={0.1}
-                  value={settings[screen.startDelay]}
-                  data-settings-key={screen.startDelay}
-                  onChange={changeSetting}
-                />
-              </div>
-              <div className="content-edit__line">
-                <input
-                  id={screen.overrideFixedDuration}
-                  type="checkbox"
-                  value={settings[screen.overrideFixedDuration]}
-                  onChange={changeSetting}
-                />
-                <label htmlFor={screen.overrideFixedDuration}>
-                  {i18n[screen.overrideFixedDuration]}
-                </label>
-                <input
-                  id={screen.fixedDuration}
-                  type="number"
-                  max={60}
-                  min={0}
-                  step={0.1}
-                  value={settings[screen.fixedDuration]}
-                  data-settings-key={screen.fixedDuration}
-                  onChange={changeSetting}
-                />
-              </div>
+              <CheckLabelNum
+                id={screen.startDelay}
+                value={settings[screen.startDelay]}
+                onChange={changeSetting}
+                min={1}
+                max={60}
+                step={1}
+                checkId={screen.overrideStartDelay}
+                checkValue={settings[screen.overrideStartDelay]}
+              />
+              <CheckLabelNum
+                id={screen.fixedDuration}
+                value={settings[screen.fixedDuration]}
+                onChange={changeSetting}
+                min={1}
+                max={60}
+                step={1}
+                checkId={screen.overrideFixedDuration}
+                checkValue={settings[screen.overrideFixedDuration]}
+              />
               <CheckLabel
                 id={screen.useLossless}
                 value={settings[screen.useLossless]}
@@ -307,38 +274,22 @@ export const ContentEdit = ({ categories, onSettingSet, settings }) => {
                 value={settings[region.showMagnifier]}
                 onChange={changeSetting}
               />
-              {/* label + number input */}
-              <div className="content-edit__line">
-                <label htmlFor={region.magnifierPixelCount}>
-                  {i18n[region.magnifierPixelCount]}
-                </label>
-                <input
-                  id={region.magnifierPixelCount}
-                  type="number"
-                  max={60}
-                  min={1}
-                  step={1}
-                  value={settings[region.magnifierPixelCount]}
-                  data-settings-key={region.magnifierPixelCount}
-                  onChange={changeSetting}
-                />
-              </div>
-              {/* label + number input */}
-              <div className="content-edit__line">
-                <label htmlFor={region.magnifierSizeCount}>
-                  {i18n[region.magnifierSizeCount]}
-                </label>
-                <input
-                  id={region.magnifierSizeCount}
-                  type="number"
-                  max={60}
-                  min={1}
-                  step={1}
-                  value={settings[region.magnifierSizeCount]}
-                  data-settings-key={region.magnifierSizeCount}
-                  onChange={changeSetting}
-                />
-              </div>
+              <LabelNum
+                id={region.magnifierPixelCount}
+                value={settings[region.magnifierPixelCount]}
+                onChange={changeSetting}
+                min={3}
+                max={35}
+                step={2}
+              />
+              <LabelNum
+                id={region.magnifierSizeCount}
+                value={settings[region.magnifierSizeCount]}
+                onChange={changeSetting}
+                min={3}
+                max={30}
+                step={1}
+              />
               <CheckLabel
                 id={region.showCrosshair}
                 value={settings[region.showCrosshair]}
