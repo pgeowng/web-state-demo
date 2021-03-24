@@ -2,6 +2,9 @@ import React, { useState } from 'react'
 import './style.css'
 
 import { ButtonReset } from '../Button'
+import { I18N } from './i18n'
+
+import { CheckLabel } from './UI/CheckLabel'
 // import { CaptureScreenRecorder } from './category/CaptureScreenRecorder'
 
 const Select = ({ className, ...props }) => (
@@ -85,378 +88,308 @@ export const ContentEdit = ({ categories, onSettingSet, settings }) => {
   }
 
   return (
-    <div className="content-edit">
-      <div className="content-edit__list">
-        {categories.map(({ key, label, isSubitem }) => (
-          <ButtonReset
-            key={key}
-            className={`content-edit__item ${
-              isSubitem ? 'content-edit__item--subitem' : ''
-            } ${key === category ? 'content-edit__item--selected' : ''}`}
-            data-category={key}
-            onClick={onCategory}
-          >
-            {label}
-          </ButtonReset>
-        ))}
-      </div>
-      <div className="content-edit__inner">
-        {/* <CaptureScreenRecorder settings={settings} onChange={onChange} /> */}
-        {category === 'capture-screen-recording' ? (
-          <>
-            <div className="content-edit__line">
-              <button type="button">Screen recording options...</button>
-            </div>
-            {/* label + number input */}
-            <div className="content-edit__line">
-              <label htmlFor={screen.FPS}>{i18n[screen.FPS]}</label>
-              <input
-                id={screen.FPS}
-                type="number"
-                max={60}
-                min={1}
-                step={1}
-                value={settings[screen.FPS]}
-                data-settings-key={screen.FPS}
-                onChange={changeSetting}
-              />
-            </div>
-            {/* label + number input */}
-            <div className="content-edit__line">
-              <label htmlFor={screen.gifFPS}>{i18n[screen.gifFPS]}</label>
-              <input
-                id={screen.gifFPS}
-                type="number"
-                max={60}
-                min={1}
-                step={1}
-                value={settings[screen.gifFPS]}
-                data-settings-key={screen.gifFPS}
-                onChange={changeSetting}
-              />
-            </div>
-            {/* checkbox + label */}
-            <div className="content-edit__line">
-              <input
+    <I18N.Provider value={i18n}>
+      <div className="content-edit">
+        <div className="content-edit__list">
+          {categories.map(({ key, label, isSubitem }) => (
+            <ButtonReset
+              key={key}
+              className={`content-edit__item ${
+                isSubitem ? 'content-edit__item--subitem' : ''
+              } ${key === category ? 'content-edit__item--selected' : ''}`}
+              data-category={key}
+              onClick={onCategory}
+            >
+              {label}
+            </ButtonReset>
+          ))}
+        </div>
+        <div className="content-edit__inner">
+          {/* <CaptureScreenRecorder settings={settings} onChange={onChange} /> */}
+          {category === 'capture-screen-recording' ? (
+            <>
+              <div className="content-edit__line">
+                <button type="button">Screen recording options...</button>
+              </div>
+              {/* label + number input */}
+              <div className="content-edit__line">
+                <label htmlFor={screen.FPS}>{i18n[screen.FPS]}</label>
+                <input
+                  id={screen.FPS}
+                  type="number"
+                  max={60}
+                  min={1}
+                  step={1}
+                  value={settings[screen.FPS]}
+                  data-settings-key={screen.FPS}
+                  onChange={changeSetting}
+                />
+              </div>
+              {/* label + number input */}
+              <div className="content-edit__line">
+                <label htmlFor={screen.gifFPS}>{i18n[screen.gifFPS]}</label>
+                <input
+                  id={screen.gifFPS}
+                  type="number"
+                  max={60}
+                  min={1}
+                  step={1}
+                  value={settings[screen.gifFPS]}
+                  data-settings-key={screen.gifFPS}
+                  onChange={changeSetting}
+                />
+              </div>
+              <CheckLabel
                 id={screen.showCursor}
-                type="checkbox"
                 value={settings[screen.showCursor]}
                 onChange={changeSetting}
               />
-              <label htmlFor={screen.showCursor}>
-                {i18n[screen.showCursor]}
-              </label>
-            </div>
-            {/* checkbox + label + number input*/}
-            <div className="content-edit__line">
-              <input
-                id={screen.overrideStartDelay}
-                type="checkbox"
-                value={settings[screen.overrideStartDelay]}
-                onChange={changeSetting}
-              />
-              <label htmlFor={screen.overrideStartDelay}>
-                {i18n[screen.overrideStartDelay]}
-              </label>
-              <input
-                id={screen.startDelay}
-                type="number"
-                max={60}
-                min={0}
-                step={0.1}
-                value={settings[screen.startDelay]}
-                data-settings-key={screen.startDelay}
-                onChange={changeSetting}
-              />
-            </div>
-            <div className="content-edit__line">
-              <input
-                id={screen.overrideFixedDuration}
-                type="checkbox"
-                value={settings[screen.overrideFixedDuration]}
-                onChange={changeSetting}
-              />
-              <label htmlFor={screen.overrideFixedDuration}>
-                {i18n[screen.overrideFixedDuration]}
-              </label>
-              <input
-                id={screen.fixedDuration}
-                type="number"
-                max={60}
-                min={0}
-                step={0.1}
-                value={settings[screen.fixedDuration]}
-                data-settings-key={screen.fixedDuration}
-                onChange={changeSetting}
-              />
-            </div>
-            <div className="content-edit__line">
-              <input
+              {/* checkbox + label + number input*/}
+              <div className="content-edit__line">
+                <input
+                  id={screen.overrideStartDelay}
+                  type="checkbox"
+                  value={settings[screen.overrideStartDelay]}
+                  onChange={changeSetting}
+                />
+                <label htmlFor={screen.overrideStartDelay}>
+                  {i18n[screen.overrideStartDelay]}
+                </label>
+                <input
+                  id={screen.startDelay}
+                  type="number"
+                  max={60}
+                  min={0}
+                  step={0.1}
+                  value={settings[screen.startDelay]}
+                  data-settings-key={screen.startDelay}
+                  onChange={changeSetting}
+                />
+              </div>
+              <div className="content-edit__line">
+                <input
+                  id={screen.overrideFixedDuration}
+                  type="checkbox"
+                  value={settings[screen.overrideFixedDuration]}
+                  onChange={changeSetting}
+                />
+                <label htmlFor={screen.overrideFixedDuration}>
+                  {i18n[screen.overrideFixedDuration]}
+                </label>
+                <input
+                  id={screen.fixedDuration}
+                  type="number"
+                  max={60}
+                  min={0}
+                  step={0.1}
+                  value={settings[screen.fixedDuration]}
+                  data-settings-key={screen.fixedDuration}
+                  onChange={changeSetting}
+                />
+              </div>
+              <CheckLabel
                 id={screen.useLossless}
-                type="checkbox"
                 value={settings[screen.useLossless]}
                 onChange={changeSetting}
               />
-              <label htmlFor={screen.useLossless}>
-                {i18n[screen.useLossless]}
-              </label>
-            </div>
-            <div className="content-edit__line">
-              <input
+              <CheckLabel
                 id={screen.transparentSelection}
-                type="checkbox"
                 value={settings[screen.transparentSelection]}
                 onChange={changeSetting}
               />
-              <label htmlFor={screen.transparentSelection}>
-                {i18n[screen.transparentSelection]}
-              </label>
-            </div>
-            {/* checkbox */}
-            <div className="content-edit__line">
-              <input
+              <CheckLabel
                 id={screen.conformation}
-                type="checkbox"
                 value={settings[screen.conformation]}
                 onChange={changeSetting}
               />
-              <label htmlFor={screen.conformation}>
-                {i18n[screen.conformation]}
-              </label>
-            </div>
-          </>
-        ) : category === 'capture-region-capture' ? (
-          <>
-            {/* checkbox */}
-            <div className="content-edit__line">
-              <input
+            </>
+          ) : category === 'capture-region-capture' ? (
+            <>
+              <CheckLabel
                 id={region.useMultiregion}
-                type="checkbox"
                 value={settings[region.useMultiregion]}
                 onChange={changeSetting}
               />
-              <label htmlFor={region.useMultiregion}>
-                {i18n[region.useMultiregion]}
-              </label>
-            </div>
-            {/* select */}
-            <div className="content-edit__line">
-              <label htmlFor={region.rmbAction}>{i18n[region.rmbAction]}</label>
-              <select id={region.rmbAction}>
-                <option>1</option>
-                <option>2</option>
-              </select>
-            </div>
-            {/* select */}
-            <div className="content-edit__line">
-              <label htmlFor={region.mmbAction}>{i18n[region.mmbAction]}</label>
-              <select id={region.mmbAction}>
-                <option>1</option>
-                <option>2</option>
-              </select>
-            </div>
-            {/* select */}
-            <div className="content-edit__line">
-              <label htmlFor={region.m4bAction}>{i18n[region.m4bAction]}</label>
-              <select id={region.m4bAction}>
-                <option>1</option>
-                <option>2</option>
-              </select>
-            </div>
-            {/* select */}
-            <div className="content-edit__line">
-              <label htmlFor={region.m5bAction}>{i18n[region.m5bAction]}</label>
-              <select id={region.m5bAction}>
-                <option>1</option>
-                <option>2</option>
-              </select>
-            </div>
-            {/* checkbox */}
-            <div className="content-edit__line">
-              <input
+              {/* select */}
+              <div className="content-edit__line">
+                <label htmlFor={region.rmbAction}>
+                  {i18n[region.rmbAction]}
+                </label>
+                <select id={region.rmbAction}>
+                  <option>1</option>
+                  <option>2</option>
+                </select>
+              </div>
+              {/* select */}
+              <div className="content-edit__line">
+                <label htmlFor={region.mmbAction}>
+                  {i18n[region.mmbAction]}
+                </label>
+                <select id={region.mmbAction}>
+                  <option>1</option>
+                  <option>2</option>
+                </select>
+              </div>
+              {/* select */}
+              <div className="content-edit__line">
+                <label htmlFor={region.m4bAction}>
+                  {i18n[region.m4bAction]}
+                </label>
+                <select id={region.m4bAction}>
+                  <option>1</option>
+                  <option>2</option>
+                </select>
+              </div>
+              {/* select */}
+              <div className="content-edit__line">
+                <label htmlFor={region.m5bAction}>
+                  {i18n[region.m5bAction]}
+                </label>
+                <select id={region.m5bAction}>
+                  <option>1</option>
+                  <option>2</option>
+                </select>
+              </div>
+              <CheckLabel
                 id={region.allowHover}
-                type="checkbox"
                 value={settings[region.allowHover]}
                 onChange={changeSetting}
               />
-              <label htmlFor={region.allowHover}>
-                {i18n[region.allowHover]}
-              </label>
-            </div>
-            {/* checkbox */}
-            <div className="content-edit__line">
-              <input
+              <CheckLabel
                 id={region.detectInsideRegions}
-                type="checkbox"
                 value={settings[region.detectInsideRegions]}
                 onChange={changeSetting}
               />
-              <label htmlFor={region.detectInsideRegions}>
-                {i18n[region.detectInsideRegions]}
-              </label>
-            </div>
-            {/* checkbox + label*/}
-            <div className="content-edit__line">
-              <input
+              <CheckLabel
                 id={region.dimBackground}
-                type="checkbox"
                 value={settings[region.dimBackground]}
                 onChange={changeSetting}
               />
-              <label htmlFor={region.dimBackground}>
-                {i18n[region.dimBackground]}
-              </label>
-            </div>
-            {/* checkbox + label + text input (help & validation) */}
-            <div className="content-edit__line">
-              <input
-                id={region.overrideCustomCursorText}
-                type="checkbox"
-                value={settings[region.overrideCustomCursorText]}
-                onChange={changeSetting}
-              />
-              <label htmlFor={region.overrideCustomCursorText}>
-                {i18n[region.overrideCustomCursorText]}
-              </label>
-              <input
-                id={screen.customCursorText}
-                type="text"
-                value={settings[screen.customCursorText]}
-                data-settings-key={screen.customCursorText}
-                onChange={changeSetting}
-              />
-            </div>
-            {/* label + extendableSelect<WindowSize>  */}
-            <div className="content-edit__line">
-              <label htmlFor={region.snapRegion}>
-                {i18n[region.snapRegion]}
-              </label>
-              <select id={region.snapRegion}>
-                <option>1</option>
-                <option>2</option>
-              </select>
-            </div>
-            {/* checkbox + label*/}
-            <div className="content-edit__line">
-              <input
+              {/* checkbox + label + text input (help & validation) */}
+              <div className="content-edit__line">
+                <input
+                  id={region.overrideCustomCursorText}
+                  type="checkbox"
+                  value={settings[region.overrideCustomCursorText]}
+                  onChange={changeSetting}
+                />
+                <label htmlFor={region.overrideCustomCursorText}>
+                  {i18n[region.overrideCustomCursorText]}
+                </label>
+                <input
+                  id={screen.customCursorText}
+                  type="text"
+                  value={settings[screen.customCursorText]}
+                  data-settings-key={screen.customCursorText}
+                  onChange={changeSetting}
+                />
+              </div>
+              {/* label + extendableSelect<WindowSize>  */}
+              <div className="content-edit__line">
+                <label htmlFor={region.snapRegion}>
+                  {i18n[region.snapRegion]}
+                </label>
+                <select id={region.snapRegion}>
+                  <option>1</option>
+                  <option>2</option>
+                </select>
+              </div>
+              <CheckLabel
                 id={region.showPosition}
-                type="checkbox"
                 value={settings[region.showPosition]}
                 onChange={changeSetting}
               />
-              <label htmlFor={region.showPosition}>
-                {i18n[region.showPosition]}
-              </label>
-            </div>
-            {/* checkbox + label*/}
-            <div className="content-edit__line">
-              <input
+              <CheckLabel
                 id={region.showMagnifier}
-                type="checkbox"
                 value={settings[region.showMagnifier]}
                 onChange={changeSetting}
               />
-              <label htmlFor={region.showMagnifier}>
-                {i18n[region.showMagnifier]}
-              </label>
-            </div>
-            {/* label + number input */}
-            <div className="content-edit__line">
-              <label htmlFor={region.magnifierPixelCount}>
-                {i18n[region.magnifierPixelCount]}
-              </label>
-              <input
-                id={region.magnifierPixelCount}
-                type="number"
-                max={60}
-                min={1}
-                step={1}
-                value={settings[region.magnifierPixelCount]}
-                data-settings-key={region.magnifierPixelCount}
-                onChange={changeSetting}
-              />
-            </div>
-            {/* label + number input */}
-            <div className="content-edit__line">
-              <label htmlFor={region.magnifierSizeCount}>
-                {i18n[region.magnifierSizeCount]}
-              </label>
-              <input
-                id={region.magnifierSizeCount}
-                type="number"
-                max={60}
-                min={1}
-                step={1}
-                value={settings[region.magnifierSizeCount]}
-                data-settings-key={region.magnifierSizeCount}
-                onChange={changeSetting}
-              />
-            </div>
-            {/* checkbox + label*/}
-            <div className="content-edit__line">
-              <input
+              {/* label + number input */}
+              <div className="content-edit__line">
+                <label htmlFor={region.magnifierPixelCount}>
+                  {i18n[region.magnifierPixelCount]}
+                </label>
+                <input
+                  id={region.magnifierPixelCount}
+                  type="number"
+                  max={60}
+                  min={1}
+                  step={1}
+                  value={settings[region.magnifierPixelCount]}
+                  data-settings-key={region.magnifierPixelCount}
+                  onChange={changeSetting}
+                />
+              </div>
+              {/* label + number input */}
+              <div className="content-edit__line">
+                <label htmlFor={region.magnifierSizeCount}>
+                  {i18n[region.magnifierSizeCount]}
+                </label>
+                <input
+                  id={region.magnifierSizeCount}
+                  type="number"
+                  max={60}
+                  min={1}
+                  step={1}
+                  value={settings[region.magnifierSizeCount]}
+                  data-settings-key={region.magnifierSizeCount}
+                  onChange={changeSetting}
+                />
+              </div>
+              <CheckLabel
                 id={region.showCrosshair}
-                type="checkbox"
                 value={settings[region.showCrosshair]}
                 onChange={changeSetting}
               />
-              <label htmlFor={region.showCrosshair}>
-                {i18n[region.showCrosshair]}
-              </label>
-            </div>
-            {/* label + SizeInput (2 inputs) */}
-            <div className="content-edit__line">
-              <input
-                id={region.useFixedSize}
-                type="checkbox"
-                value={settings[region.useFixedSize]}
-                onChange={changeSetting}
-              />
-              <label htmlFor={region.useFixedSize}>
-                {i18n[region.useFixedSize]}
-              </label>
-              <label htmlFor={region.fixedSizeWidth}>
-                {i18n[region.fixedSizeWidth]}
-              </label>
-              <input
-                id={region.fixedSizeWidth}
-                type="number"
-                max={60}
-                min={1}
-                step={1}
-                value={settings[region.fixedSizeWidth]}
-                data-settings-key={region.fixedSizeWidth}
-                onChange={changeSetting}
-              />
-              <label htmlFor={region.fixedSizeHeight}>
-                {i18n[region.fixedSizeHeight]}
-              </label>
-              <input
-                id={region.fixedSizeHeight}
-                type="number"
-                max={60}
-                min={1}
-                step={1}
-                value={settings[region.fixedSizeHeight]}
-                data-settings-key={region.fixedSizeHeight}
-                onChange={changeSetting}
-              />
-            </div>
-            {/* checkbox + label*/}
-            <div className="content-edit__line">
-              <input
+              {/* label + SizeInput (2 inputs) */}
+              <div className="content-edit__line">
+                <input
+                  id={region.useFixedSize}
+                  type="checkbox"
+                  value={settings[region.useFixedSize]}
+                  onChange={changeSetting}
+                />
+                <label htmlFor={region.useFixedSize}>
+                  {i18n[region.useFixedSize]}
+                </label>
+                <label htmlFor={region.fixedSizeWidth}>
+                  {i18n[region.fixedSizeWidth]}
+                </label>
+                <input
+                  id={region.fixedSizeWidth}
+                  type="number"
+                  max={60}
+                  min={1}
+                  step={1}
+                  value={settings[region.fixedSizeWidth]}
+                  data-settings-key={region.fixedSizeWidth}
+                  onChange={changeSetting}
+                />
+                <label htmlFor={region.fixedSizeHeight}>
+                  {i18n[region.fixedSizeHeight]}
+                </label>
+                <input
+                  id={region.fixedSizeHeight}
+                  type="number"
+                  max={60}
+                  min={1}
+                  step={1}
+                  value={settings[region.fixedSizeHeight]}
+                  data-settings-key={region.fixedSizeHeight}
+                  onChange={changeSetting}
+                />
+              </div>
+              <CheckLabel
                 id={region.showFPS}
-                type="checkbox"
                 value={settings[region.showFPS]}
                 onChange={changeSetting}
               />
-              <label htmlFor={region.showFPS}>{i18n[region.showFPS]}</label>
-            </div>
-          </>
-        ) : (
-          ''
-        )}
+            </>
+          ) : (
+            ''
+          )}
+        </div>
       </div>
-    </div>
+    </I18N.Provider>
   )
 }
