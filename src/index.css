@@ -19,3 +19,24 @@ code {
 *::after {
   box-sizing: border-box;
 }
+
+:root {
+  --color-background: #343941;
+  --color-text: #fff;
+}
+
+/* input reset from https://moderncss.dev/custom-css-styles-for-form-inputs-and-textareas/ */
+.input {
+  font-size: 1em;
+  font-family: inherit;
+  padding: 0.25em 0.5em;
+
+  outline: 0;
+
+  color: #fff;
+  background-color: #343941;
+  border: 1px solid #abadb3;
+  line-height: 1;
+
+  overflow-x: visible;
+}
