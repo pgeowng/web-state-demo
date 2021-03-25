@@ -14,6 +14,20 @@ const Select = ({ className, ...props }) => (
 )
 
 const keys = {
+  image: {
+    default: {
+      override: 'Override image settings',
+      imageFormat: 'Image format:',
+      pngDepth: 'PNG bit depth:',
+      jpegQuality: 'JPEG quality:',
+      gifQuality: 'GIF quality:',
+      jpegThreshold:
+        'If image size bigger than specified size then use JPEG as image format',
+      jpegThresholdValue: null,
+      existAction: 'If file exists:',
+    },
+  },
+
   capture: {
     regionCapture: {
       useMultiregion:
@@ -65,6 +79,16 @@ Remove shape
 Swap tool type
 Capture fullscreen
 Capture active monitor`.split('\n'),
+  imageFormat: 'PNG JPEG GIF BMP TIFF'.split(' '),
+  pngDepth: 'Default,Automatically detect,32 bit,24 bit'.split(','),
+  gifQuality: `Default .NET encoding (Fast encoding but average quality)
+Octree quantizer 256 colors (Slow encoding but better quality)
+Octree quantizer 16 colors
+Palette quantizer grayscale 256 colors`.split('\n'),
+  existAction: `Ask what to do
+Overwrite file
+Append number to the filename
+Do not save`.split('\n'),
 }
 
 console.log(i18n)
@@ -90,12 +114,13 @@ console.log(keys)
 
 const screen = keys.capture.screenRecorder
 const region = keys.capture.regionCapture
+const image = keys.image.default
 
 const _uid = 'qwefqwef'
 const uid = (a) => _uid + '--' + a
 
 export const ContentEdit = ({ categories, onSettingSet, settings }) => {
-  const [category, setCategory] = useState('capture-region-capture')
+  const [category, setCategory] = useState('image')
 
   const onCategory = (e) => {
     setCategory(e.target.dataset.category)
@@ -125,7 +150,55 @@ export const ContentEdit = ({ categories, onSettingSet, settings }) => {
         </div>
         <div className="content-edit__inner">
           {/* <CaptureScreenRecorder settings={settings} onChange={onChange} /> */}
-          {category === 'capture-screen-recording' ? (
+          {category === 'image' ? (
+            <>
+              <CheckLabel
+                id={image.override}
+                value={settings[image.override]}
+                onChange={changeSetting}
+              />
+              <LabelSelect
+                id={image.imageFormat}
+                value={settings[image.imageFormat]}
+                onChange={changeSetting}
+                optionsEnum={selectEnum.imageFormat}
+                oneLine={false}
+              />
+              <LabelSelect
+                id={image.pngDepth}
+                value={settings[image.pngDepth]}
+                onChange={changeSetting}
+                optionsEnum={selectEnum.pngDepth}
+                oneLine={false}
+              />
+              <LabelNum
+                id={image.jpegQuality}
+                value={settings[image.jpegQuality]}
+                onChange={changeSetting}
+                min={1}
+                max={100}
+                step={1}
+              />
+              <CheckLabelNum
+                id={image.jpegThresholdValue}
+                checkId={image.jpegThreshold}
+                checkValue={settings[image.jpegThreshold]}
+                min={100}
+                /* max */
+                max={Number.MAX_SAFE_INTEGER}
+                step={1}
+                value={settings[image.jpegThresholdValue]}
+                onChange={changeSetting}
+              />
+              <LabelSelect
+                id={image.existAction}
+                value={settings[image.existAction]}
+                onChange={changeSetting}
+                optionsEnum={selectEnum.existAction}
+                oneLine={false}
+              />
+            </>
+          ) : category === 'capture-screen-recording' ? (
             <>
               <div className="content-edit__line">
                 <button type="button">Screen recording options...</button>
