@@ -6,6 +6,8 @@ import { Window } from './components/Window'
 import { ContentMain } from './components/ContentMain'
 import { ContentEdit } from './components/ContentEdit'
 
+import { Settings } from './context/Settings'
+
 const data = `Screenshot,Print Screen
 Record Audio,F3
 Map Something,Ctrl + Shift + Backspace
@@ -94,6 +96,13 @@ categories.splice(
 export const App = () => {
   const [settings, setSettings] = useState({})
 
+  const setSetting = (key, value) => {
+    setSettings((prevState) => ({
+      ...prevState,
+      [key]: value,
+    }))
+  }
+
   const [size, setSize] = useState({
     desktopWidth: window.innerWidth,
     desktopHeight: window.innerHeight,
@@ -133,7 +142,9 @@ export const App = () => {
         minHeight={490}
         {...size}
       >
-        <ContentEdit categories={categories} settings={{}} />
+        <Settings.Provider value={{ settings, setSetting }}>
+          <ContentEdit categories={categories} />
+        </Settings.Provider>
       </Window>
     </>
   )

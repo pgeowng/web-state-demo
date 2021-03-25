@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import { I18N } from '../i18n'
+import { Settings } from '../../../context/Settings'
 
 /* important note
  labelnum links label by id with numinput
@@ -8,8 +9,9 @@ import { I18N } from '../i18n'
   be careful
 */
 
-export const LabelNum = ({ id, min, max, step, value, onChange }) => {
+export const LabelNum = ({ id, min, max, step }) => {
   const i18n = useContext(I18N)
+  const { settings, setSetting } = useContext(Settings)
 
   return (
     <div className="content-edit__line label-num">
@@ -17,47 +19,36 @@ export const LabelNum = ({ id, min, max, step, value, onChange }) => {
       <input
         type="number"
         id={id}
-        data-setting-key={id}
         min={min}
         max={max}
         step={step}
-        value={value}
-        onChange={onChange}
+        value={settings[id]}
+        onChange={(e) => setSetting(id, e.target.value)}
       />
     </div>
   )
 }
 
-export const CheckLabelNum = ({
-  id,
-  checkId,
-  checkValue,
-  min,
-  max,
-  step,
-  value,
-  onChange,
-}) => {
+export const CheckLabelNum = ({ id, checkId, min, max, step }) => {
   const i18n = useContext(I18N)
+  const { settings, setSetting } = useContext(Settings)
 
   return (
     <div className="content-edit__line label-num">
       <input
         type="checkbox"
         id={checkId}
-        data-setting-key={checkId}
-        value={checkValue}
-        onChange={onChange}
+        value={settings[checkId]}
+        onChange={(e) => setSetting(checkId, e.target.value)}
       />
       <label htmlFor={checkId}>{i18n[checkId]}</label>
       <input
         type="number"
-        data-setting-key={id}
         min={min}
         max={max}
         step={step}
-        value={value}
-        onChange={onChange}
+        value={settings[id]}
+        onChange={(e) => setSetting(id, e.target.value)}
       />
     </div>
   )

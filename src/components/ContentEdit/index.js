@@ -119,8 +119,9 @@ const image = keys.image.default
 const _uid = 'qwefqwef'
 const uid = (a) => _uid + '--' + a
 
-export const ContentEdit = ({ categories, onSettingSet, settings }) => {
-  const [category, setCategory] = useState('image')
+export const ContentEdit = ({ categories }) => {
+  //const [category, setCategory] = useState('image')
+  const [category, setCategory] = useState('capture-region-capture')
 
   const onCategory = (e) => {
     setCategory(e.target.dataset.category)
@@ -152,49 +153,29 @@ export const ContentEdit = ({ categories, onSettingSet, settings }) => {
           {/* <CaptureScreenRecorder settings={settings} onChange={onChange} /> */}
           {category === 'image' ? (
             <>
-              <CheckLabel
-                id={image.override}
-                value={settings[image.override]}
-                onChange={changeSetting}
-              />
+              <CheckLabel id={image.override} />
               <LabelSelect
                 id={image.imageFormat}
-                value={settings[image.imageFormat]}
-                onChange={changeSetting}
-                optionsEnum={selectEnum.imageFormat}
+                optionEnum={selectEnum.imageFormat}
                 oneLine={false}
               />
               <LabelSelect
                 id={image.pngDepth}
-                value={settings[image.pngDepth]}
-                onChange={changeSetting}
-                optionsEnum={selectEnum.pngDepth}
+                optionEnum={selectEnum.pngDepth}
                 oneLine={false}
               />
-              <LabelNum
-                id={image.jpegQuality}
-                value={settings[image.jpegQuality]}
-                onChange={changeSetting}
-                min={1}
-                max={100}
-                step={1}
-              />
+              <LabelNum id={image.jpegQuality} min={1} max={100} step={1} />
               <CheckLabelNum
                 id={image.jpegThresholdValue}
                 checkId={image.jpegThreshold}
-                checkValue={settings[image.jpegThreshold]}
                 min={100}
                 /* max */
                 max={Number.MAX_SAFE_INTEGER}
                 step={1}
-                value={settings[image.jpegThresholdValue]}
-                onChange={changeSetting}
               />
               <LabelSelect
                 id={image.existAction}
-                value={settings[image.existAction]}
-                onChange={changeSetting}
-                optionsEnum={selectEnum.existAction}
+                optionEnum={selectEnum.existAction}
                 oneLine={false}
               />
             </>
@@ -204,112 +185,52 @@ export const ContentEdit = ({ categories, onSettingSet, settings }) => {
                 <button type="button">Screen recording options...</button>
               </div>
 
-              <LabelNum
-                id={screen.FPS}
-                value={settings[screen.FPS]}
-                onChange={changeSetting}
-                min={1}
-                max={60}
-                step={1}
-              />
-              <LabelNum
-                id={screen.gifFPS}
-                value={settings[screen.gifFPS]}
-                onChange={changeSetting}
-                min={1}
-                max={60}
-                step={1}
-              />
-              <CheckLabel
-                id={screen.showCursor}
-                value={settings[screen.showCursor]}
-                onChange={changeSetting}
-              />
+              <LabelNum id={screen.FPS} min={1} max={60} step={1} />
+              <LabelNum id={screen.gifFPS} min={1} max={60} step={1} />
+              <CheckLabel id={screen.showCursor} />
               <CheckLabelNum
                 id={screen.startDelay}
-                value={settings[screen.startDelay]}
-                onChange={changeSetting}
                 min={1}
                 max={60}
                 step={1}
                 checkId={screen.overrideStartDelay}
-                checkValue={settings[screen.overrideStartDelay]}
               />
               <CheckLabelNum
                 id={screen.fixedDuration}
-                value={settings[screen.fixedDuration]}
-                onChange={changeSetting}
                 min={1}
                 max={60}
                 step={1}
                 checkId={screen.overrideFixedDuration}
-                checkValue={settings[screen.overrideFixedDuration]}
               />
-              <CheckLabel
-                id={screen.useLossless}
-                value={settings[screen.useLossless]}
-                onChange={changeSetting}
-              />
-              <CheckLabel
-                id={screen.transparentSelection}
-                value={settings[screen.transparentSelection]}
-                onChange={changeSetting}
-              />
-              <CheckLabel
-                id={screen.conformation}
-                value={settings[screen.conformation]}
-                onChange={changeSetting}
-              />
+              <CheckLabel id={screen.useLossless} />
+              <CheckLabel id={screen.transparentSelection} />
+              <CheckLabel id={screen.conformation} />
             </>
           ) : category === 'capture-region-capture' ? (
             <>
-              <CheckLabel
-                id={region.useMultiregion}
-                value={settings[region.useMultiregion]}
-                onChange={changeSetting}
-              />
+              <CheckLabel id={region.useMultiregion} />
 
               <LabelSelect
                 id={region.rmbAction}
-                value={settings[region.rmbAction]}
-                onChange={changeSetting}
-                optionsEnum={selectEnum.mouseButtonAction}
+                optionEnum={selectEnum.mouseButtonAction}
               />
               <LabelSelect
                 id={region.mmbAction}
-                value={settings[region.mmbAction]}
-                onChange={changeSetting}
-                optionsEnum={selectEnum.mouseButtonAction}
+                optionEnum={selectEnum.mouseButtonAction}
               />
               <LabelSelect
                 id={region.m4bAction}
-                value={settings[region.m4bAction]}
-                onChange={changeSetting}
-                optionsEnum={selectEnum.mouseButtonAction}
+                optionEnum={selectEnum.mouseButtonAction}
               />
               <LabelSelect
                 id={region.m5bAction}
-                value={settings[region.m5bAction]}
-                onChange={changeSetting}
-                optionsEnum={selectEnum.mouseButtonAction}
+                optionEnum={selectEnum.mouseButtonAction}
               />
-              <CheckLabel
-                id={region.allowHover}
-                value={settings[region.allowHover]}
-                onChange={changeSetting}
-              />
-              <CheckLabel
-                id={region.detectInsideRegions}
-                value={settings[region.detectInsideRegions]}
-                onChange={changeSetting}
-              />
-              <CheckLabel
-                id={region.dimBackground}
-                value={settings[region.dimBackground]}
-                onChange={changeSetting}
-              />
+              <CheckLabel id={region.allowHover} />
+              <CheckLabel id={region.detectInsideRegions} />
+              <CheckLabel id={region.dimBackground} />
               {/* checkbox + label + text input (help & validation) */}
-              <div className="content-edit__line">
+              {/* <div className="content-edit__line">
                 <input
                   id={region.overrideCustomCursorText}
                   type="checkbox"
@@ -326,9 +247,9 @@ export const ContentEdit = ({ categories, onSettingSet, settings }) => {
                   data-settings-key={screen.customCursorText}
                   onChange={changeSetting}
                 />
-              </div>
+              </div> */}
               {/* label + extendableSelect<WindowSize>  */}
-              <div className="content-edit__line">
+              {/* <div className="content-edit__line">
                 <label htmlFor={region.snapRegion}>
                   {i18n[region.snapRegion]}
                 </label>
@@ -336,40 +257,24 @@ export const ContentEdit = ({ categories, onSettingSet, settings }) => {
                   <option>1</option>
                   <option>2</option>
                 </select>
-              </div>
-              <CheckLabel
-                id={region.showPosition}
-                value={settings[region.showPosition]}
-                onChange={changeSetting}
-              />
-              <CheckLabel
-                id={region.showMagnifier}
-                value={settings[region.showMagnifier]}
-                onChange={changeSetting}
-              />
+              </div> */}
+              <CheckLabel id={region.showPosition} />
+              <CheckLabel id={region.showMagnifier} />
               <LabelNum
                 id={region.magnifierPixelCount}
-                value={settings[region.magnifierPixelCount]}
-                onChange={changeSetting}
                 min={3}
                 max={35}
                 step={2}
               />
               <LabelNum
                 id={region.magnifierSizeCount}
-                value={settings[region.magnifierSizeCount]}
-                onChange={changeSetting}
                 min={3}
                 max={30}
                 step={1}
               />
-              <CheckLabel
-                id={region.showCrosshair}
-                value={settings[region.showCrosshair]}
-                onChange={changeSetting}
-              />
+              <CheckLabel id={region.showCrosshair} />
               {/* label + SizeInput (2 inputs) */}
-              <div className="content-edit__line">
+              {/* <div className="content-edit__line">
                 <input
                   id={region.useFixedSize}
                   type="checkbox"
@@ -405,12 +310,8 @@ export const ContentEdit = ({ categories, onSettingSet, settings }) => {
                   data-settings-key={region.fixedSizeHeight}
                   onChange={changeSetting}
                 />
-              </div>
-              <CheckLabel
-                id={region.showFPS}
-                value={settings[region.showFPS]}
-                onChange={changeSetting}
-              />
+              </div> */}
+              <CheckLabel id={region.showFPS} />
             </>
           ) : (
             ''
