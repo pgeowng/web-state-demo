@@ -49,3 +49,7 @@
 
   padding: 0.5rem 0.6875rem;
 }
+
+.content-edit__line {
+  min-height: 2em;
+}

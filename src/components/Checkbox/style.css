@@ -1,0 +1,41 @@
+.checkbox {
+  position: relative;
+}
+
+.checkbox__input {
+  position: absolute;
+  width: 1em;
+  height: 1em;
+  opacity: 0;
+}
+
+.checkbox__svg {
+  width: 1em;
+  height: 1em;
+  outline: 1px solid #333333;
+  background-color: #fff;
+  margin-right: 0.5em;
+  position: relative;
+  bottom: -0.125rem;
+}
+
+.checkbox__input:hover + .checkbox__svg {
+  outline-color: #0078d7;
+}
+
+.checkbox__input:hover + .checkbox__svg .checkbox__checkmark {
+  stroke: #0078d7;
+}
+
+.checkbox__input:focus + .checkbox__svg {
+  outline-color: #0078d7;
+  background-color: #cce4f7;
+}
+
+.checkbox__input:focus + .checkbox__svg .checkbox__checkmark {
+  stroke: #0078d7;
+}
+
+.checkbox__input:checked + .checkbox__svg .checkbox__checkmark {
+  stroke: transparent;
+}

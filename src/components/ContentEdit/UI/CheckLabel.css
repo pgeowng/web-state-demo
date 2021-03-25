@@ -1,0 +1,14 @@
+.check-label {
+  color: #fff;
+  display: flex;
+  align-items: center;
+}
+
+.check-label__checkbox {
+  margin: 0;
+  margin-right: 0.5em;
+}
+
+.check-label__label {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
