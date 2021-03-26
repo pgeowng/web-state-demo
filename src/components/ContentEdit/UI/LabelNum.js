@@ -2,6 +2,8 @@ import React, { useContext } from 'react'
 import { I18N } from '../i18n'
 import { Settings } from '../../../context/Settings'
 
+import { Checkbox, InputNum } from '../../UI'
+
 /* important note
  labelnum links label by id with numinput
  checklabelnum - links label by checkId with checkbox
@@ -15,10 +17,11 @@ export const LabelNum = ({ id, min, max, step }) => {
 
   return (
     <div className="content-edit__line label-num">
-      <label htmlFor={id}>{i18n[id]}</label>
-      <input
-        type="number"
-        id={id}
+      <label htmlFor={id} className="text content-edit__left">
+        {i18n[id]}
+      </label>
+      <InputNum
+        className="content-edit__right"
         min={min}
         max={max}
         step={step}
@@ -35,15 +38,16 @@ export const CheckLabelNum = ({ id, checkId, min, max, step }) => {
 
   return (
     <div className="content-edit__line label-num">
-      <input
-        type="checkbox"
+      <Checkbox
+        className="content-edit__left"
         id={checkId}
         value={settings[checkId]}
         onChange={(e) => setSetting(checkId, e.target.value)}
-      />
-      <label htmlFor={checkId}>{i18n[checkId]}</label>
-      <input
-        type="number"
+      >
+        {i18n[checkId]}
+      </Checkbox>
+      <InputNum
+        className="content-edit__right"
         min={min}
         max={max}
         step={step}
