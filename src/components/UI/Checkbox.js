@@ -1,8 +1,8 @@
 import React from 'react'
-import './style.css'
+import './Checkbox.css'
 
-export const Checkbox = ({ id, children, value, onChange }) => (
-  <label htmlFor={id} className="checkbox">
+export const Checkbox = ({ className, id, children, value, onChange }) => (
+  <label htmlFor={id} className={`checkbox ${className || ''}`}>
     <input
       type="checkbox"
       className="checkbox__input"

@@ -3,7 +3,7 @@ import './CheckLabel.css'
 import { I18N } from '../i18n'
 import { Settings } from '../../../context/Settings'
 
-import { Checkbox } from '../../Checkbox'
+import { Checkbox } from '../../UI'
 
 export const CheckLabel = ({ id }) => {
   const i18n = useContext(I18N)
