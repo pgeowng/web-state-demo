@@ -95,6 +95,7 @@ categories.splice(
 
 export const App = () => {
   const [settings, setSettings] = useState({})
+  const [order, setOrder] = useState([0, 1])
 
   const setSetting = (key, value) => {
     setSettings((prevState) => ({
@@ -117,6 +118,18 @@ export const App = () => {
     })
   })
 
+  const onFocus = (idx) => {
+    const newOrder = []
+    const curr = order[idx]
+
+    for (let i = 0; i < order.length; i++) {
+      newOrder.push(order[i] < curr ? order[i] : order[i] - 1)
+    }
+    newOrder[idx] = newOrder.length
+
+    setOrder(newOrder)
+  }
+
   return (
     <>
       <Window
@@ -126,6 +139,8 @@ export const App = () => {
         minWidth={490}
         minHeight={300}
         {...size}
+        zIndex={order[0]}
+        onFocus={() => onFocus(0)}
       >
         <ContentMain
           bindings={[...data, ...data, ...data]}
@@ -141,6 +156,22 @@ export const App = () => {
         minWidth={490}
         minHeight={490}
         {...size}
+        zIndex={order[1]}
+        onFocus={() => onFocus(1)}
+      >
+        <Settings.Provider value={{ settings, setSetting }}>
+          <ContentEdit categories={categories} />
+        </Settings.Provider>
+      </Window>
+      <Window
+        title="ShareX - Edit"
+        startWidth={490}
+        startHeight={490}
+        minWidth={490}
+        minHeight={490}
+        {...size}
+        zIndex={order[2]}
+        onFocus={() => onFocus(2)}
       >
         <Settings.Provider value={{ settings, setSetting }}>
           <ContentEdit categories={categories} />

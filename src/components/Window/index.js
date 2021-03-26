@@ -45,6 +45,8 @@ export const Window = ({
   minHeight = 300,
   desktopWidth,
   desktopHeight,
+  zIndex = 0,
+  onFocus,
 }) => {
   const [shift, setShift] = useState({ x: 0, y: 0 })
   const [size, setSize] = useState({ x: startWidth, y: startHeight })
@@ -162,7 +164,9 @@ export const Window = ({
         width: cssOffset(size.x, mouseOffset.x),
         left: shift.x + 'px',
         top: shift.y + 'px',
+        zIndex: zIndex,
       }}
+      onMouseDown={onFocus}
     >
       <div className="window__header">
         <div className="window__desc" onMouseDown={startDrag}>
