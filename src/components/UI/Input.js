@@ -1,5 +1,5 @@
 import React from 'react'
-import './style.css'
+import './Input.css'
 
 export const Input = ({ className, ...props }) => (
   <input type="text" className={`input ${className || ''}`} {...props} />
