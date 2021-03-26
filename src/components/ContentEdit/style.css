@@ -52,4 +52,14 @@
 
 .content-edit__line {
   min-height: 2em;
+  display: flex;
+  align-items: center;
+  margin-bottom: 2px;
+}
+
+.content-edit__left {
+  min-width: 30ch;
+}
+
+.content-edit__right {
 }
