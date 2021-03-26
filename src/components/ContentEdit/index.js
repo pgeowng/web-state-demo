@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './style.css'
 
-import { ButtonReset } from '../Button'
+import { ButtonReset } from '../UI'
 import { I18N } from './i18n'
 
 import { CheckLabel } from './UI/CheckLabel'

@@ -1,3 +1,4 @@
 import { Select } from './Select'
+import { Button, ButtonWhite, ButtonReset } from './Button'
 
-export { Select }
+export { Select, Button, ButtonWhite, ButtonReset }

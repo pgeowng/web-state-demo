@@ -1,5 +1,5 @@
 import React from 'react'
-import './style.css'
+import './Button.css'
 
 export const ButtonReset = ({ ...props }) => <button type="button" {...props} />
 

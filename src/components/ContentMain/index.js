@@ -4,7 +4,7 @@ import './style.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowUp, faArrowDown } from '@fortawesome/free-solid-svg-icons'
 
-import { Button } from '../Button'
+import { Button } from '../UI'
 import { BindingRow } from './BindingRow'
 
 export const ContentMain = ({ bindings, selectedIdx, reducer }) => {
