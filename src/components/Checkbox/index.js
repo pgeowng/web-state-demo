@@ -22,12 +22,12 @@ export const Checkbox = ({ id, children, value, onChange }) => (
       <polyline
         class="checkbox__checkmark"
         points="1,5 4,8 10,2"
-        stroke="#484848"
+        // stroke="#484848"
         stroke-width="1.2"
         fill="none"
       ></polyline>
     </svg>
 
-    <span>{children}</span>
+    <span className="checkbox__label">{children}</span>
   </label>
 )
