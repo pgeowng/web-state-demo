@@ -62,7 +62,7 @@ categories.splice(
     isSubitem: true,
   },
   {
-    key: 'capture-screen-recording',
+    key: 'capture-screen-recorder',
     label: 'Screen recorder',
     isSubitem: true,
   },

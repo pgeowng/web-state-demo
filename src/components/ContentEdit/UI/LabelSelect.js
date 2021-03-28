@@ -2,18 +2,16 @@ import React, { useContext } from 'react'
 
 import { Select } from '../../UI'
 
-import { I18N } from '../i18n'
 import { Settings } from '../../../context/Settings'
 
-export const LabelSelect = ({ id, optionEnum }) => {
-  const i18n = useContext(I18N)
+export const LabelSelect = ({ id, optionEnum, children }) => {
   const { settings, setSetting } = useContext(Settings)
-  console.log(id)
+  console.log(id, optionEnum, children)
 
   return (
     <div className="content-edit__line label-select">
       <label htmlFor={id} className="text content-edit__left">
-        {i18n[id]}
+        {children}
       </label>
 
       <Select
@@ -22,7 +20,7 @@ export const LabelSelect = ({ id, optionEnum }) => {
         onChange={(e) => setSetting(id, e.target.value)}
         value={settings[id]}
       >
-        {i18n[optionEnum]}
+        {optionEnum}
       </Select>
     </div>
   )
