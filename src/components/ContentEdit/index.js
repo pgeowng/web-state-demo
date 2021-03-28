@@ -8,29 +8,29 @@ import { CaptureRegionCapture } from './category/CaptureRegionCapture'
 import { CaptureScreenRecorder } from './category/CaptureScreenRecorder'
 
 const categories = [
-  {
-    key: 'task',
-    label: 'Task',
-  },
-  {
-    key: 'general',
-    label: 'General',
-  },
+  // {
+  //   key: 'task',
+  //   label: 'Task',
+  // },
+  // {
+  //   key: 'general',
+  //   label: 'General',
+  // },
   {
     key: 'image',
     label: 'Image',
     element: ImageDefault,
   },
-  {
-    key: 'image-effects',
-    label: 'Effects',
-    isSubitem: true,
-  },
-  {
-    key: 'image-thumbnail',
-    label: 'Thumbnail',
-    isSubitem: true,
-  },
+  // {
+  //   key: 'image-effects',
+  //   label: 'Effects',
+  //   isSubitem: true,
+  // },
+  // {
+  //   key: 'image-thumbnail',
+  //   label: 'Thumbnail',
+  //   isSubitem: true,
+  // },
   {
     key: 'capture',
     label: 'Capture',
@@ -47,46 +47,46 @@ const categories = [
     isSubitem: true,
     element: CaptureScreenRecorder,
   },
-  {
-    key: 'capture-ocr',
-    label: 'OCR',
-    isSubitem: true,
-  },
-  {
-    key: 'upload',
-    label: 'Upload',
-  },
-  {
-    key: 'upload-file-naming',
-    label: 'File naming',
-    isSubitem: true,
-  },
-  {
-    key: 'upload-clipboard-upload',
-    label: 'Clipboard upload',
-    isSubitem: true,
-  },
-  {
-    key: 'upload-uploader-filters',
-    label: 'Uploader filters',
-    isSubitem: true,
-  },
-  {
-    key: 'action',
-    label: 'Action',
-  },
-  {
-    key: 'watch-folders',
-    label: 'Watch folders',
-  },
-  {
-    key: 'tools',
-    label: 'Tools',
-  },
-  {
-    key: 'advanced',
-    label: 'Advanced',
-  },
+  // {
+  //   key: 'capture-ocr',
+  //   label: 'OCR',
+  //   isSubitem: true,
+  // },
+  // {
+  //   key: 'upload',
+  //   label: 'Upload',
+  // },
+  // {
+  //   key: 'upload-file-naming',
+  //   label: 'File naming',
+  //   isSubitem: true,
+  // },
+  // {
+  //   key: 'upload-clipboard-upload',
+  //   label: 'Clipboard upload',
+  //   isSubitem: true,
+  // },
+  // {
+  //   key: 'upload-uploader-filters',
+  //   label: 'Uploader filters',
+  //   isSubitem: true,
+  // },
+  // {
+  //   key: 'action',
+  //   label: 'Action',
+  // },
+  // {
+  //   key: 'watch-folders',
+  //   label: 'Watch folders',
+  // },
+  // {
+  //   key: 'tools',
+  //   label: 'Tools',
+  // },
+  // {
+  //   key: 'advanced',
+  //   label: 'Advanced',
+  // },
 ]
 
 export const ContentEdit = () => {

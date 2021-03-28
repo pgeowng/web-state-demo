@@ -30,7 +30,6 @@ const resizeOffset = {
 }
 
 const clamp = (value, min, max) => {
-  console.log('clamp', value, min, max)
   return Math.min(Math.max(value, min), max)
 }
 
@@ -46,9 +45,10 @@ export const Window = ({
   desktopWidth,
   desktopHeight,
   zIndex = 0,
+  startShift,
   onFocus,
 }) => {
-  const [shift, setShift] = useState({ x: 0, y: 0 })
+  const [shift, setShift] = useState(startShift)
   const [size, setSize] = useState({ x: startWidth, y: startHeight })
 
   /* resizing */
@@ -94,7 +94,6 @@ export const Window = ({
   const [dragShift, setDragShift] = useState({ x: 0, y: 0 })
 
   const startDrag = (e) => {
-    console.log('startdrag')
     /* check lmb */
     setDragging(true)
     setDragShift({ x: e.clientX - shift.x, y: e.clientY - shift.y })

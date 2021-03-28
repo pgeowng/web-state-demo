@@ -6,7 +6,6 @@ import { Settings } from '../../../context/Settings'
 
 export const LabelSelect = ({ id, optionEnum, children }) => {
   const { settings, setSetting } = useContext(Settings)
-  console.log(id, optionEnum, children)
 
   return (
     <div className="content-edit__line label-select">

@@ -11,6 +11,22 @@ import { Settings } from './context/Settings'
 const data = `Screenshot,Print Screen
 Record Audio,F3
 Map Something,Ctrl + Shift + Backspace
+Rename something,Shift + F
+Screenshot,Print Screen
+Record Audio,F3
+Map Something,Ctrl + Shift + Backspace
+Rename something,Shift + F
+Screenshot,Print Screen
+Record Audio,F3
+Map Something,Ctrl + Shift + Backspace
+Rename something,Shift + F
+Screenshot,Print Screen
+Record Audio,F3
+Map Something,Ctrl + Shift + Backspace
+Rename something,Shift + F
+Screenshot,Print Screen
+Record Audio,F3
+Map Something,Ctrl + Shift + Backspace
 Rename something,Shift + F`
   .split('\n')
   .map((e, i) => {
@@ -23,79 +39,9 @@ Rename something,Shift + F`
     }
   })
 
-const categories = `Task
-General
-Image
-Capture
-Upload
-Action
-Watch folders
-Tools
-Advanced`
-  .split('\n')
-  .map((e) => ({
-    key: e.toLowerCase(),
-    label: e,
-  }))
-
-categories.splice(
-  3,
-  0,
-  {
-    key: 'image-effects',
-    label: 'Effects',
-    isSubitem: true,
-  },
-  {
-    key: 'image-thumbnail',
-    label: 'Thumbnail',
-    isSubitem: true,
-  }
-)
-
-categories.splice(
-  6,
-  0,
-  {
-    key: 'capture-region-capture',
-    label: 'Region capture',
-    isSubitem: true,
-  },
-  {
-    key: 'capture-screen-recorder',
-    label: 'Screen recorder',
-    isSubitem: true,
-  },
-  {
-    key: 'capture-ocr',
-    label: 'OCR',
-    isSubitem: true,
-  }
-)
-
-categories.splice(
-  10,
-  0,
-  {
-    key: 'upload-file-naming',
-    label: 'File naming',
-    isSubitem: true,
-  },
-  {
-    key: 'upload-clipboard-upload',
-    label: 'Clipboard upload',
-    isSubitem: true,
-  },
-  {
-    key: 'upload-uploader-filters',
-    label: 'Uploader filters',
-    isSubitem: true,
-  }
-)
-
 export const App = () => {
   const [settings, setSettings] = useState({})
-  const [order, setOrder] = useState([0, 1])
+  const [order, setOrder] = useState([2, 1, 0])
 
   const setSetting = (key, value) => {
     setSettings((prevState) => ({
@@ -110,11 +56,18 @@ export const App = () => {
   })
 
   useEffect(() => {
+    let timeoutId = null
+
     window.addEventListener('resize', (e) => {
-      setSize({
-        desktopWidth: window.innerWidth,
-        desktopHeight: window.innerHeight,
-      })
+      /* timeout hack because of too many resize events */
+      clearTimeout(timeoutId)
+      timeoutId = setTimeout(() => {
+        console.log('setting')
+        setSize({
+          desktopWidth: window.innerWidth,
+          desktopHeight: window.innerHeight,
+        })
+      }, 500)
     })
   })
 
@@ -141,9 +94,10 @@ export const App = () => {
         {...size}
         zIndex={order[0]}
         onFocus={() => onFocus(0)}
+        startShift={{ x: 50, y: 50 }}
       >
         <ContentMain
-          bindings={[...data, ...data, ...data]}
+          bindings={data}
           selectedIdx={1}
           reducer={(obj) => console.log(obj)}
         />
@@ -158,9 +112,10 @@ export const App = () => {
         {...size}
         zIndex={order[1]}
         onFocus={() => onFocus(1)}
+        startShift={{ x: 100, y: 100 }}
       >
         <Settings.Provider value={{ settings, setSetting }}>
-          <ContentEdit categories={categories} />
+          <ContentEdit />
         </Settings.Provider>
       </Window>
       <Window
@@ -172,9 +127,10 @@ export const App = () => {
         {...size}
         zIndex={order[2]}
         onFocus={() => onFocus(2)}
+        startShift={{ x: 150, y: 150 }}
       >
         <Settings.Provider value={{ settings, setSetting }}>
-          <ContentEdit categories={categories} />
+          <ContentEdit />
         </Settings.Provider>
       </Window>
     </>

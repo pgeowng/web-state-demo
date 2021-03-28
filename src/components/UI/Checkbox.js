@@ -20,10 +20,10 @@ export const Checkbox = ({ className, id, children, value, onChange }) => (
       focusable="false"
     >
       <polyline
-        class="checkbox__checkmark"
+        className="checkbox__checkmark"
         points="1,5 4,8 10,2"
         // stroke="#484848"
-        stroke-width="1.2"
+        strokeWidth="1.2"
         fill="none"
       ></polyline>
     </svg>

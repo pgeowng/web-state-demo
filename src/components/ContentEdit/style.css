@@ -7,6 +7,7 @@
 .content-edit__list {
   padding: 0.5rem;
   display: flex;
+  flex-shrink: 0;
   flex-direction: column;
   overflow: auto;
 
